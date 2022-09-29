@@ -161,7 +161,3 @@ module.exports = {
   getTrendingTour,
   getCheapestTour,
 };
-
-// git add .
-// git commit -m "tour routes done"
-// git push
