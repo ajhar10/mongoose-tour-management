@@ -7,6 +7,7 @@ const {
   getCheapestTourService,
 } = require("../services/tour.services");
 
+//GET ALL TOURS PACKAGES
 const getTours = async (req, res, next) => {
   try {
     let filters = { ...req.query };
@@ -54,8 +55,27 @@ const getTours = async (req, res, next) => {
   }
 };
 
-//create Tours
-// CREATE A TOUR
+//GET A TOUR PACKAGE DETAILS
+const getTourById = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const tour = await getTourByIdService(id);
+
+    res.status(200).json({
+      status: "success",
+      message: "tour inserted successfully",
+      data: tour,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "Failed",
+      message: "Data is't inserted",
+      error: error.message,
+    });
+  }
+};
+
+// CREATE TOUR PACKAGES
 const createTour = async (req, res, next) => {
   try {
     const tour = await createTourService(req.body);
@@ -74,7 +94,13 @@ const createTour = async (req, res, next) => {
   }
 };
 
+//UPDATE A TOUR PACKAGE
+
 module.exports = {
   getTours,
   createTour,
 };
+
+// git add .
+// git commit -m "tour package details"
+// git push
