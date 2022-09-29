@@ -156,11 +156,12 @@ const getCheapestTour = async (req, res, next) => {
 module.exports = {
   getTours,
   createTour,
+  getTourById,
   updateATourPackage,
   getTrendingTour,
   getCheapestTour,
 };
 
 // git add .
-// git commit -m "tour controllers done"
+// git commit -m "tour routes done"
 // git push
