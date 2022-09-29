@@ -95,12 +95,72 @@ const createTour = async (req, res, next) => {
 };
 
 //UPDATE A TOUR PACKAGE
+const updateATourPackage = async (req, res, next) => {
+  const { id } = req.params;
+  const data = req.body;
+  try {
+    const tour = await updateTourByIdService(id, data);
+
+    res.status(200).json({
+      status: "success",
+      message: "tour inserted successfully",
+      data: tour,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "Failed",
+      message: "Data isn't updated",
+      error: error.message,
+    });
+  }
+};
+
+//GET TRENDING TOUR PACKAGE
+const getTrendingTour = async (req, res, next) => {
+  try {
+    const tour = await getTrendingTourService();
+
+    res.status(200).json({
+      status: "success",
+      message: "tour inserted successfully",
+      data: tour,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "Failed",
+      message: "Data isn't updated",
+      error: error.message,
+    });
+  }
+};
+
+//GET CHEPEST TOUR PACKAGE
+const getCheapestTour = async (req, res, next) => {
+  try {
+    const tour = await getCheapestTourService();
+
+    res.status(200).json({
+      status: "success",
+      message: "tour inserted successfully",
+      data: tour,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "Failed",
+      message: "Data isn't updated",
+      error: error.message,
+    });
+  }
+};
 
 module.exports = {
   getTours,
   createTour,
+  updateATourPackage,
+  getTrendingTour,
+  getCheapestTour,
 };
 
 // git add .
-// git commit -m "tour package details"
+// git commit -m "tour controllers done"
 // git push
